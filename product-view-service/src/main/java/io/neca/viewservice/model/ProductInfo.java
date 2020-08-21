@@ -10,6 +10,13 @@ public class ProductInfo {
 		super();
 	}
 
+	public ProductInfo(String productID, String name, String specs) {
+		super();
+		this.productID = productID;
+		this.name = name;
+		this.specs = specs;
+	}
+
 	public String getProductID() {
 		return productID;
 	}

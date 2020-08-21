@@ -2,7 +2,6 @@ package io.neca.viewservice.model;
 
 public class Product {
 
-	private String productID;
 	private String productName;
 	private String productInfo;
 	private String customerName;
@@ -18,14 +17,6 @@ public class Product {
 		this.productInfo = productInfo;
 		this.customerName = customerName;
 		this.review = review;
-	}
-
-	public String getProductID() {
-		return productID;
-	}
-
-	public void setProductID(String productID) {
-		this.productID = productID;
 	}
 
 	public String getProductName() {

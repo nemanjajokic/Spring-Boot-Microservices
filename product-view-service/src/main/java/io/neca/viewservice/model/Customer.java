@@ -9,6 +9,12 @@ public class Customer {
 		super();
 	}
 
+	public Customer(String customerID, String name) {
+		super();
+		this.customerID = customerID;
+		this.name = name;
+	}
+
 	public String getCustomerID() {
 		return customerID;
 	}

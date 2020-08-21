@@ -11,6 +11,9 @@ import io.neca.viewservice.model.Customer;
 import io.neca.viewservice.model.Product;
 import io.neca.viewservice.model.ProductInfo;
 import io.neca.viewservice.model.Review;
+import io.neca.viewservice.service.CustomerInfo;
+import io.neca.viewservice.service.ProductInfoService;
+import io.neca.viewservice.service.ProductReview;
 
 @RestController
 @RequestMapping("/product")
@@ -18,16 +21,19 @@ public class ViewResource {
 	
 	@Autowired
 	RestTemplate restTemplate;
+	@Autowired
+	ProductReview productReview;
+	@Autowired
+	CustomerInfo customerInfo;
+	@Autowired
+	ProductInfoService productInfoService;
 	
-	// get all reviewed products
 	@GetMapping("/{productID}")
 	public Product getProduct(@PathVariable String productID) {
-		// get product review
-		Review review = restTemplate.getForObject("http://product-review-service/review/" + productID, Review.class);
-		// get customer info
-		Customer customer = restTemplate.getForObject("http://customer-info-service/customer/" + review.getCustomerID(), Customer.class);
-		// get product info
-		ProductInfo productInfo = restTemplate.getForObject("http://product-info-service/info/" + productID, ProductInfo.class);
+		
+		Review review = productReview.getReview(productID);
+		Customer customer = customerInfo.getCustomerInfo(review.getCustomerID());
+		ProductInfo productInfo = productInfoService.getProductinfo(productID);
 
 		return new Product(productInfo.getName(), productInfo.getSpecs(), customer.getName(), review.getComment());
 	}

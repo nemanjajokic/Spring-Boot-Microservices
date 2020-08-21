@@ -10,6 +10,13 @@ public class Review {
 		super();
 	}
 
+	public Review(String productID, String customerID, String comment) {
+		super();
+		this.productID = productID;
+		this.customerID = customerID;
+		this.comment = comment;
+	}
+
 	public String getProductID() {
 		return productID;
 	}
