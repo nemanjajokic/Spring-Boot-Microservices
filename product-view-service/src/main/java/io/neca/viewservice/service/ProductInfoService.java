@@ -7,7 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
-import io.neca.viewservice.model.ProductInfo;
+import io.neca.viewservice.dto.ProductInfo;
 
 @Service
 public class ProductInfoService {

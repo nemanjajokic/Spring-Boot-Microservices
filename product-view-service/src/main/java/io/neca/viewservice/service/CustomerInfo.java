@@ -6,7 +6,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
-import io.neca.viewservice.model.Customer;
+import io.neca.viewservice.dto.Customer;
 
 @Service
 public class CustomerInfo {

@@ -1,4 +1,4 @@
-package io.neca.viewservice.model;
+package io.neca.viewservice.dto;
 
 public class Product {
 
