@@ -20,7 +20,10 @@ import io.neca.viewservice.service.CustomerInfo;
 import io.neca.viewservice.service.ProductInfoService;
 import io.neca.viewservice.service.ProductReview;
 import io.neca.viewservice.service.ProductReviews;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
+@Api("API Documentation test by Neca")
 @RestController
 @RequestMapping("/product")
 public class ViewResource {
@@ -36,6 +39,7 @@ public class ViewResource {
 	@Autowired
 	ProductReviews productReviews;
 	
+	@ApiOperation("Customer search for products by ID")
 	@GetMapping("/{productID}")
 	public Product getProduct(@PathVariable String productID) {
 		
@@ -45,25 +49,6 @@ public class ViewResource {
 
 		return new Product(productInfo.getName(), productInfo.getSpecs(), customer.getName(), review.getComment());
 	}
-
-//	@GetMapping("/all")		//test productReviews
-//	public CustomerReviews getAllProducts() {
-//		
-//		return productReviews.getAllReviews();
-//	}
-	
-//	@GetMapping("/all")
-//	public List<Product> getAllProducts() {
-//		CustomerReviews reviews = productReviews.getAllReviews();
-//		
-//		return reviews.getReviews().stream().map(r -> {
-//			Customer customer = customerInfo.getCustomerInfo(r.getCustomerID());
-//			ProductInfo productInfo = productInfoService.getProductinfo(r.getProductID());
-//			
-//			return new Product(productInfo.getName(), productInfo.getSpecs(), customer.getName(), r.getComment());
-//		}).collect(Collectors.toList());
-//		
-//	}
 	
 	@GetMapping("/all")
 	public Products getAllProducts() {
@@ -81,5 +66,18 @@ public class ViewResource {
 		
 		return products;
 	}
+	
+//	@GetMapping("/all")
+//	public List<Product> getAllProducts() {
+//		CustomerReviews reviews = productReviews.getAllReviews();
+//		
+//		return reviews.getReviews().stream().map(r -> {
+//			Customer customer = customerInfo.getCustomerInfo(r.getCustomerID());
+//			ProductInfo productInfo = productInfoService.getProductinfo(r.getProductID());
+//			
+//			return new Product(productInfo.getName(), productInfo.getSpecs(), customer.getName(), r.getComment());
+//		}).collect(Collectors.toList());
+//		
+//	}
 	
 }
