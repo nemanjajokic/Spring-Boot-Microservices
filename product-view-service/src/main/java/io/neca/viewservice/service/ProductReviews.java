@@ -7,6 +7,7 @@ import org.springframework.web.client.RestTemplate;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 import io.neca.viewservice.dto.CustomerReviews;
+import io.neca.viewservice.exception.ProductException;
 
 @Service
 public class ProductReviews {
@@ -20,8 +21,8 @@ public class ProductReviews {
 		return restTemplate.getForObject("http://product-review-service/review/all", CustomerReviews.class);
 	}
 	
-	public CustomerReviews fallBackReviews() throws Exception {		// Add exception class
-		throw new Exception("not found");
+	public CustomerReviews fallBackReviews() {
+		throw new ProductException();
 	}
 	
 }
