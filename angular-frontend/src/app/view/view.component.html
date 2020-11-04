@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Service</title>
+</head>
+<body>
+    <h1>Angular Frontend</h1><br>
+    <input type="text" [(ngModel)] = "id">
+    <button (click) = "getAll()">Get Product By ID</button><br>
+    <div *ngIf = "product">
+        <p>Product Name: {{product.productName}}</p>
+        <p>Product Info: {{product.productInfo}}</p>
+        <p>Customer Name: {{product.customerName}}</p>
+        <p>Comment: {{product.review}}</p>
+    </div>
+</body>
+</html>
